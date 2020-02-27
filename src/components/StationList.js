@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './StationList.css'
 
@@ -10,33 +11,35 @@ class StationList extends Component {
     }
   }
   componentDidMount() {
-    let url = 'https://api.wmata.com/StationPrediction.svc/json/GetPrediction/all?api_key=e13626d03d8e4c03ac07f95541b3091b'
+    let url = 'https://api.wmata.com/Rail.svc/json/jStations?api_key=e13626d03d8e4c03ac07f95541b3091b'
     axios.get(url)
       .then(res => {
-        this.setState({ data: res.data.Trains })
+        this.setState({ data: res.data.Stations })
       })
   }  
   render() {
     let color = this.props.match.params.color
     let line = this.props.match.params.line
-    let trains = []
+    let stations = []
     
-    this.state.data.map(train => {
-      if (train.Line === line) {
-        trains.push(train)
+    this.state.data.map(station => {
+      if (station.LineCode1 === line || station.LineCode2 === line || station.LineCode3 === line) {
+        stations.push(station)
       }
     })
-    let trainsList = trains.map(train => {
+    stations.sort(function(a, b) {
+      if (a.Name < b.Name)
+        return -1
+    })
+    let stationList = stations.map(station => {
       return(
-        <li>{train.LocationName}</li>
+        <Link className='station' key={station.Code}>{station.Name}</Link>
       )
     })
-    console.log(this.props.match.params.line)
-    console.log(trains)
     return(
       <div className='station-container'>
         <h1>{color} Line</h1>
-        <ul>{trainsList}</ul>
+        <ul className='station-list'>{stationList}</ul>
       </div>
     )
   }

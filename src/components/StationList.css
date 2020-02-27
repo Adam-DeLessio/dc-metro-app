@@ -1,0 +1,19 @@
+.station-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.station-list {
+	padding: 0;
+}
+.station {
+	width: 200px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	list-style-type: none;
+	background-color: lightgray;
+	margin: 5px;
+	border-radius: 10px;
+}

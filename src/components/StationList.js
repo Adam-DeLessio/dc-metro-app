@@ -33,7 +33,7 @@ class StationList extends Component {
     })
     let stationList = stations.map(station => {
       return(
-        <Link className='station' key={station.Code}>{station.Name}</Link>
+        <Link to={'/station/' + station.Code} className='station' key={station.Code}>{station.Name}</Link>
       )
     })
     return(

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
-import axios from 'axios'
 import './App.css';
 import Home from './components/Home'
 import StationList from './components/StationList'
-import SelectStation from './components/SelectStation'
+// import SelectStation from './components/SelectStation'
+import Station from './components/Station'
 
 class App extends Component {
   render() {
@@ -27,8 +27,14 @@ class App extends Component {
             />
           )}
         />  
-
-
+        <Route
+          path='/station/:StationCode'
+          render={props => (
+            <Station
+              {...props}
+            />
+          )}
+        />
 
       </div>
     )

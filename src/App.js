@@ -28,7 +28,16 @@ class App extends Component {
           )}
         />  
         <Route
-          path='/station/:StationCode'
+          path='/station/:StationCode/:StationName/'
+          exact
+          render={props => (
+            <Station
+              {...props}
+            />
+          )}
+        />
+        <Route
+          path='/station/:StationCode/StationName/:StationTogether1/'
           render={props => (
             <Station
               {...props}

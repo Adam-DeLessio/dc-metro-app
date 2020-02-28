@@ -32,9 +32,16 @@ class StationList extends Component {
         return -1
     })
     let stationList = stations.map(station => {
-      return(
-        <Link to={'/station/' + station.Code} className='station' key={station.Code}>{station.Name}</Link>
-      )
+      if (station.StationTogether1) {
+        return(
+          <Link to={`/station/${station.Code}/${station.Name}/${station.StationTogether1} `} className='station' key={station.Code}>{station.Name}</Link>
+        )     
+      } else {
+        return(
+          <Link to={`/station/${station.Code}/${station.Name}`} className='station' key={station.Code}>{station.Name}</Link>
+        )
+      }
+
     })
     return(
       <div className='station-container'>

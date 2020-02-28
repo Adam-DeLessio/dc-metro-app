@@ -1,0 +1,27 @@
+.trains {
+	list-style-type: none;
+	padding: 0;
+}
+.train {
+	margin: 3px;
+	padding: 4px;
+	border-radius: 5px;
+}
+.OR {
+	background-color: orange;
+}
+.SV {
+	background-color: silver;
+}
+.BL {
+	background-color: lightblue;
+}
+.RD {
+	background-color: red;
+}
+.GR {
+	background-color: green;
+}
+.YL {
+	background-color: yellow;
+}
